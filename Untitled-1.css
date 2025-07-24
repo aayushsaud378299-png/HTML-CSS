@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechConnect - Professional Services Platform</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-menu li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section with Background Image */
+        .hero-section {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23667eea" width="1200" height="600"/><circle fill="%23764ba2" cx="200" cy="150" r="100" opacity="0.3"/><circle fill="%23667eea" cx="800" cy="400" r="150" opacity="0.2"/><circle fill="%23f093fb" cx="1000" cy="200" r="80" opacity="0.4"/></svg>');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .cta-button {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .cta-button:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Main Container Layout */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 20px;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        /* Information Box */
+        .info-box {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .info-box:hover {
+            transform: translate`Y(-5px);
+        }
+
+        .info-box h2 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .info-box p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .sidebar-widget:hover {
+            transform: translateY(-3px);
+        }
+
+        .sidebar-widget h3 {
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 0.5rem;
+        }
+
+        .sidebar-widget ul {
+            list-style: none;
+        }
+
+        .sidebar-widget ul li {
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-widget ul li:hover {
+            padding-left: 10px;
+            color: #667eea;
+        }
+
+        .sidebar-widget ul li a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .sidebar-widget ul li a:hover {
+            color: #667eea;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 10px;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .main-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                padding: 2rem 15px;
+            }
+
+            .info-box {
+                padding: 1.5rem;
+            }
+
+            .info-box h2 {
+                font-size: 2rem;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                height: 50vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .nav-menu {
+                gap: 0.5rem;
+            }
+
+            .nav-menu li a {
+                padding: 0.3rem 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .main-container {
+                padding: 1rem 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation Menu -->
+    <header>
+        <div class="nav-container">
+            <nav>
+                <a href="#" class="logo">TechConnect</a>
+                <ul class="nav-menu">
+                    <li><a href="#home">HOME</a></li>
+                    <li><a href="#services">SERVICES</a></li>
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Background Image -->
+    <section class="hero-section" id="home">
+        <div class="hero-content">
+            <h1>Connect. Create. Succeed.</h1>
+            <p>Your premier platform for professional services and digital solutions</p>
+            <a href="#services" class="cta-button">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Main Content Container -->
+    <div class="main-container">
+        <!-- Information Box -->
+        <main class="info-box" id="services">
+            <h2>Our Services</h2>
+            <p>
+                TechConnect is a comprehensive digital platform that bridges the gap between talented professionals and businesses seeking innovative solutions. We specialize in connecting clients with expert freelancers across various domains including web development, digital marketing, content creation, and IT consulting.
+            </p>
+            <p>
+                Our platform ensures quality, reliability, and seamless collaboration through advanced project management tools, secure payment systems, and comprehensive user verification processes. Whether you're a startup looking to build your digital presence or an established business seeking specialized expertise, TechConnect provides the perfect ecosystem for your success.
+            </p>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Web Development</h3>
+                    <p>Custom websites, applications, and e-commerce solutions built by certified developers.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Digital Marketing</h3>
+                    <p>SEO, social media marketing, and comprehensive digital strategies to grow your business.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Content Creation</h3>
+                    <p>Professional writing, graphic design, and multimedia content for your brand.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>IT Consulting</h3>
+                    <p>Technical expertise and strategic guidance for your technology infrastructure.</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#portfolio">Our Portfolio</a></li>
+                    <li><a href="#testimonials">Client Testimonials</a></li>
+                    <li><a href="#pricing">Pricing Plans</a></li>
+                    <li><a href="#careers">Career Opportunities</a></li>
+                    <li><a href="#blog">Latest Blog Posts</a></li>
+                    <li><a href="#support">Customer Support</a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Platform Statistics</h3>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">500+</span>
+                        <span>Active Projects</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">1200+</span>
+                        <span>Professionals</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span>Success Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span>Support</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Latest Updates</h3>
+                <ul>
+                    <li>New mobile app launched</li>
+                    <li>Enhanced security features</li>
+                    <li>AI-powered project matching</li>
+                    <li>Blockchain payment integration</li>
+                    <li>Advanced analytics dashboard</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div>
+            <p>&copy; 2025 TechConnect. All rights reserved. | Designed with HTML & CSS</p>
+            <p>Texas College of Management & IT - Internet Fundamentals and Application Project</p>
+        </div>
+    </footer>
+</body>
+</html>
